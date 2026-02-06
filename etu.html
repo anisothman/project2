@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Espace Étudiant - Profil & Emploi du temps & Notes</title>
+<style>
+header {
+    background-color: #14532d; /* أخضر داكن */
+    color: #fefce8;
+    width: 100%;
+    height: 10vh; /* استخدم وحدة vh لتكون نسبة من ارتفاع الشاشة */
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    
+}
+
+main {
+    background-color: #ecfdf5; /* أخضر فاتح جدًا */
+    width:20%;
+    height: 80vh; /* نسبة من ارتفاع الشاشة */
+    position: fixed;
+    border-right: 3px solid #14532d;
+
+}
+
+nav {
+    height: 80vh;
+    width: 80%;
+    margin-left: 20%; /* متساوي مع عرض main */
+    background-color: #f8fafc; /* أبيض مائل للرمادي */
+    position: fixed;
+
+}
+
+footer {
+    width: 100%;
+    height: 10vh;
+    background-color: chartreuse;
+    position: fixed; /* الفوتر ثابت في الأسفل */
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 10vh; /* لتمركز النص عمودياً */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-img {
+    width: 80px;
+    border-radius: 50%;
+    border: 3px solid #ca8a04; /* ذهبي */
+}
+
+.butto{ margin-top: 30px;
+     display: flex; 
+     flex-direction: column;
+      gap: 12px; }
+
+.butto button{ padding: 12px;
+     border: none;
+      border-radius: 10px;
+       font-weight: bold; 
+       cursor: pointer; 
+       background-color: #166534; /* أخضر */ 
+       color: #fefce8; } 
+.butto button:hover{ background-color: #ca8a04;
+    color: #14532d; }
+
+.emploi-table {
+    border-collapse: collapse;
+}
+
+.emploi-table th,
+.emploi-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.emploi-table th {
+    background-color: #1d3557;
+    color: white;
+}
+
+.emploi-table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+#ex {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+      border-radius: 10px;
+       font-weight: bold; 
+       cursor: pointer; 
+       background-color: red; /* أخضر */ 
+       color: #fefce8; 
+       
+}
+
+
+</style>
+<header>
+ <h1> Espace Étudiant</h1>
+ <div id="exit"><button type="button" id="ex">return</button></div>
+</header>
+
+<main>
+   <div class="profile">
+    <img src="OIP.jpg" class="profile-img">
+    <div class="info">
+        <p><strong>Nom :</strong> <span id="name"></span></p>
+        <p><strong>Email :</strong> <span id="email"></span></p>
+    </div>
+</div>
+<div class="butto">
+    <button id="show_note">voir mes notes</button><br>
+    <button id="show_emploi">voir mon emploi</button><br>
+    <button id="remarque">le nouveau</button>
+</div>
+
+</main>
+<nav >
+    <div id="notes" style="display: none;">
+  <h2>📊 Mes Notes</h2>
+
+  <table border="1" width="100%" id="notesTable" >
+    <thead>
+      <tr>
+        <th>Matière</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- les notes vont être ajoutées ici -->
+    </tbody>
+  </table>
+</div>
+<nav>
+  <!-- EMPLOI -->
+  <div id="emploi" style="display: none;" >
+    <h2>📅 Emploi du temps</h2>
+
+    <table class="emploi-table" >
+      <tr>
+        <th>Jour</th>
+        <th>Heure</th>
+        <th>Matière</th>
+        <th>Salle</th>
+      </tr>
+
+      <tr>
+        <td>Lundi</td>
+        <td>08:00 - 10:00</td>
+        <td>Math</td>
+        <td>A1</td>
+      </tr>
+
+      <tr>
+        <td>Mardi</td>
+        <td>10:00 - 12:00</td>
+        <td>Informatique</td>
+        <td>Lab 2</td>
+      </tr>
+
+      <tr>
+        <td>Mercredi</td>
+        <td>14:00 - 16:00</td>
+        <td>Physique</td>
+        <td>B3</td>
+      </tr>
+    </table>
+  </div>
+<div id="new" style="display: none;">
+    nothing for now
+</div>
+
+</nav>
+
+
+</nav>
+</body>
+<footer>
+    <center><h1>bon courage</h1></center>
+</footer>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+<script>
+document.getElementById("show_emploi").onclick = () => {
+  document.getElementById("emploi").style.display = "block";
+  document.getElementById("notes").style.display = "none";
+  document.getElementById("new").style.display = "none";
+};
+
+document.getElementById("show_note").onclick = () => {
+  document.getElementById("notes").style.display = "block";
+  document.getElementById("emploi").style.display = "none";
+  document.getElementById("new").style.display = "none";
+  afficherNotes();
+};
+document.getElementById("remarque").onclick = () => {
+  document.getElementById("notes").style.display = "none";
+  document.getElementById("emploi").style.display = "none";
+  document.getElementById("new").style.display = "block";
+};
+document.getElementById("ex").addEventListener('click',exit);
+function exit(){
+    window.location.href="index.html";
+}
+
+  async function afficherNotes() {
+    const supabase = window.supabaseClient;
+const currentStudentName = localStorage.getItem('currentStudentName');
+
+  if (!currentStudentName) {
+    alert("Erreur: nom d'étudiant non trouvé.");
+    return;
+  }
+
+    // هنا تجلب كل البيانات من جدول note
+    const { data: notes, error } = await supabase
+      .from('note')
+      .select('matiere, note')
+       .eq('nom',currentStudentName);
+    if (error) {
+      alert('Erreur lors de récupération des notes: ' + error.message);
+      return;
+    }
+
+    const tbody = document.querySelector('#notesTable tbody');
+    tbody.innerHTML = ''; // تنظيف الجدول قبل الإضافة
+
+    if (!notes || notes.length === 0) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 2;
+      td.textContent = 'Aucune note trouvée.';
+      td.style.textAlign = 'center';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      return;
+    }
+
+    // إضافة الصفوف لكل ملاحظة
+    notes.forEach(note => {
+      const tr = document.createElement('tr');
+
+      const tdMatiere = document.createElement('td');
+      tdMatiere.textContent = note.matiere;
+
+      const tdNote = document.createElement('td');
+      tdNote.textContent = note.note;
+
+      tr.appendChild(tdMatiere);
+      tr.appendChild(tdNote);
+
+      tbody.appendChild(tr);
+    });
+  }
+window.addEventListener('load', async () => {
+  const supabase = window.supabaseClient;
+
+  // جلب اسم الطالب من التخزين المحلي
+  const currentStudentName = localStorage.getItem('currentStudentName');
+
+  if (!currentStudentName) {
+    alert("Erreur: nom d'étudiant non trouvé.");
+    return;
+  }
+
+  // عرض الاسم في العنصر المخصص
+  document.getElementById('name').textContent = currentStudentName;
+
+  // طلب البريد الإلكتروني من جدول etudiant حسب الاسم
+  const { data: etudiant, error } = await supabase
+    .from('etudiant')
+    .select('email')
+    .eq('nom', currentStudentName)
+    .limit(1)
+    .single();
+
+  if (error) {
+    alert("Erreur lors de la récupération des infos: " + error.message);
+    return;
+  }
+
+  // عرض البريد الإلكتروني
+  if (etudiant && etudiant.email) {
+    document.getElementById('email').textContent = etudiant.email;
+  } else {
+    document.getElementById('email').textContent = "Email non trouvé";
+  }
+});
+  // استدعاء الوظيفة مباشرة عند تحميل الصفحة أو عند حدث معين
+  window.addEventListener('load', afficherNotes);
+</script>
+</html>

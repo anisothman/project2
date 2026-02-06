@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Espace enseigent</title>
+<style>
+header {
+    background-color: #14532d; /* أخضر داكن */
+    color: #fefce8;
+    width: 100%;
+    height: 10vh; /* استخدم وحدة vh لتكون نسبة من ارتفاع الشاشة */
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    
+}
+
+main {
+    background-color: #ecfdf5; /* أخضر فاتح جدًا */
+    width: 15%;
+    height: 80vh; /* نسبة من ارتفاع الشاشة */
+    position: fixed;
+    border-right: 3px solid #14532d;
+
+}
+
+nav {
+    height: 80vh;
+    width: 85%;
+    margin-left: 15%; /* متساوي مع عرض main */
+    background-color: #f8fafc; /* أبيض مائل للرمادي */
+    position: fixed;
+
+}
+
+footer {
+    width: 100%;
+    height: 10vh;
+    background-color: chartreuse;
+    position: fixed; /* الفوتر ثابت في الأسفل */
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 10vh; /* لتمركز النص عمودياً */
+}
+img{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 80px;
+    border-radius: 50%;
+    border: 3px solid #ca8a04; /* ذهبي */
+}
+#ex {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+      border-radius: 10px;
+       font-weight: bold; 
+       cursor: pointer; 
+       background-color: red; /* أخضر */ 
+       color: #fefce8; 
+       
+}
+.butto{ margin-top: 30px;
+     display: flex; 
+     flex-direction: column;
+      gap: 12px; }
+
+.butto button{ padding: 12px;
+     border: none;
+      border-radius: 10px;
+       font-weight: bold; 
+       cursor: pointer; 
+       background-color: #166534; /* أخضر */ 
+       color: #fefce8; } 
+.butto button:hover{ background-color: #ca8a04;
+    color: #14532d; }
+    .emploi-table {
+    border-collapse: collapse;
+}
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #14532d;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1.5px solid #14532d;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form button {
+  background-color: #166534;
+  color: #fefce8;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #ca8a04;
+  color: #14532d;
+}
+.emploi-table {
+  border-collapse: collapse;
+  width: 90%;
+  max-width: 700px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.emploi-table th,
+.emploi-table td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.emploi-table th {
+  background-color: #14532d;
+  color: #fefce8;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.emploi-table tr:nth-child(even) {
+  background-color: #ecfdf5;
+}
+
+.emploi-table tr:hover {
+  background-color: #ca8a04;
+  color: #14532d;
+  transition: background-color 0.3s ease;
+}
+
+</style>
+</head>
+<body>
+<header>
+ <h1> Espace enseignent</h1>
+ <div id="exit"><button type="button" id="ex">return</button></div>
+</header>
+
+<main>
+   <div class="profile">
+    <img src="OIP.jpg" class="profile-img">
+    <div class="info">
+        <p><strong>Nom :</strong> <span id="name"></span></p>
+        <p><strong>Email :</strong> <span id="email"></span></p>
+    </div>
+</div>
+<div class="butto">
+    <button id="show_note">ajouter des notes</button><br>
+    <button id="show_emploi">voir mon emploi</button><br>
+</div>
+</main>
+<nav>
+    <div id="eng" style="display: none;">
+    <form >
+        nom et prenom de etudiant <input type="text" id="np"><br>
+        matiere <input type="text" id="mat"><br>
+        note <input type="text" id="notep"><br>
+        <button type="submit" id="en">engistrer</button>
+    </form></div>
+    <div id="emp" style="display: none;"> <h2>📅 Emploi du temps</h2>
+
+    <table class="emploi-table" >
+      <tr>
+        <th>Jour</th>
+        <th>Heure</th>
+        <th>Salle</th>
+      </tr>
+
+      <tr>
+        <td>Lundi</td>
+        <td>08:00 - 10:00</td>
+        <td>A1</td>
+      </tr>
+
+      <tr>
+        <td>Mardi</td>
+        <td>10:00 - 12:00</td>
+        <td>Lab 2</td>
+      </tr>
+
+      <tr>
+        <td>Mercredi</td>
+        <td>14:00 - 16:00</td>
+        <td>B3</td>
+      </tr>
+    </table></div>
+
+</nav>
+ <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+<script src="n.js"></script>
+<script>
+    document.getElementById("show_note").addEventListener('click',enge);
+    document.getElementById("show_emploi").addEventListener('click',empl);
+    function enge(){
+        document.getElementById("eng").style.display = "block";
+  document.getElementById("emp").style.display = "none";
+    }
+    function empl(){
+        document.getElementById("emp").style.display = "block";
+  document.getElementById("eng").style.display = "none";
+    }
+    document.getElementById("ex").addEventListener('click',exi);
+    function exi(){
+        window.location.href="index.html";
+    }
+</script>
+</body>
+</html>

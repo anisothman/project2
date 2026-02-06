@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestion de prof et étudiant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>School</h1>
+    <nav>
+      <a href="#" onclick="showSection('connection'); return false;">Connexion</a>
+      <a href="#" onclick="showSection('princip'); return false;">Principal</a>
+      <a href="#" onclick="showSection('contact'); return false;">Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- page principale -->
+    <section id="princip" class="content">
+      <h2>Welcome to your plateforme</h2><br> we are a school
+    </section>
+
+    <!-- page connection -->
+    <section id="connection" class="content">
+      <center>
+        <a href="#" onclick="showSection('form_etu');return false;">Etudiant</a>
+        <a href="#" onclick="showSection('form_pro');return false;">Prof</a>
+        <a href="#" onclick="showSection('formadmin');return false;">Admin</a>
+      </center>    
+    </section>
+
+    <!-- formulaire etudiant -->
+    <section id="form_etu" class="content">
+      <form id="formetu">
+        <div style="text-align: center;">Se connecter</div>
+        <table align="center">
+          <tr>
+            <td><label for="add">Address</label></td>
+            <td><input type="text" name="addresseetu" id="add"></td>
+          </tr>
+          <tr>
+            <td><label for="pass">Password</label></td>
+            <td><input type="password" name="passl" id="passl"></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <button type="button" id="conet">connection</button>
+              <input type="reset" value="Cancel">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <a href="#">Mot de passe oublier?</a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <a href="#" onclick="showSection('inscrireet');return false;">Inscrire</a>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+
+    <!-- inscription etudiant -->
+    <section id="inscrireet" class="content">
+      <form id="inscriptionForm">
+        <h3 style="text-align: center;">Inscription de étudiant</h3>
+        <table align="center">
+          <tr>
+            <td>Nom et prénom</td>
+            <td><input type="text" name="nom" id="nom"></td>
+          </tr>
+          <tr>
+            <td>Adresse email</td>
+            <td><input type="email" name="email" id="email"></td>
+          </tr>
+          <tr>
+            <td>Mot de passe</td>
+            <td><input type="password" name="passetu" id="passetu"></td>
+          </tr>
+          <tr>
+            <td>Re-password</td>
+            <td><input type="password" name="pass1" id="passetu1"></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <button type="button" id="btnInscription">Inscrire</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+
+    <!-- formulaire prof -->
+    <section id="form_pro" class="content">
+      <form id="conpro">
+        <div style="text-align: center;">Se connecter</div>
+        <table align="center">
+          <tr>
+            <td><label for="addp">Address</label></td>
+            <td><input type="text" name="addp" id="addp"></td>
+          </tr>
+          <tr>
+            <td><label for="passp">Password</label></td>
+            <td><input type="password" name="passp" id="passp"></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <button type="button"id="conprof">connexion</button>
+              <input type="reset" value="Cancel">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <a href="#">Mot de passe oublier?</a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <a href="#" onclick="showSection('inscrirprof');return false;">Inscrire</a>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+
+    <!-- inscrire prof -->
+    <section id="inscrirprof" class="content">
+      <form id="forminscprof">
+        <h3 style="text-align:center; margin-bottom:15px;">Inscription Professeur</h3>
+        <table align="center">
+          <tr>
+            <td>Nom et prénom</td>
+            <td><input type="text" name="nomprof" id="nomprof"></td>
+          </tr>
+          <tr>
+            <td>Matière</td>
+            <td><input type="text" name="matiere" id="matiere"></td>
+          </tr>
+          <tr>
+            <td>Adresse email</td>
+            <td><input type="email" name="emailprof" id="emailprof"></td>
+          </tr>
+          <tr>
+            <td>Mot de passe</td>
+            <td><input type="password" name="passprof" id="passprof"></td>
+          </tr>
+          <tr>
+            <td>Re-password</td>
+            <td><input type="password" name="repassprof" id="repassprof"></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <button type="button" id="inscprof" >Inscrire</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+
+    <!-- formulaire admin -->
+    <section id="formadmin" class="content">
+      <form id="form_admin" action="admin.html" onsubmit="return true">
+        <div style="text-align: center; color:blueviolet; font-weight: bold;">Se connecter</div>
+        <table align="center">
+          <tr>
+            <td><label for="admin">Address</label></td>
+            <td><input type="text" name="admin" id="admin"></td>
+          </tr>
+          <tr>
+            <td><label for="passadmin">Password</label></td>
+            <td><input type="password" name="passadmin" id="passadmin"></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <button type="button" id="conadmin">connexion</button>
+              <input type="reset" value="Cancel">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+
+    <!-- page contact us -->
+    <section id="contact" class="content">
+      <h2 style="color: #1e90ff; margin-bottom: 20px;">Contact Us</h2>
+      <p><strong>Phone:</strong> +1 234 567 890</p>
+      <p><strong>Email:</strong> info@othmanschool.com</p>
+      <p><strong>Location:</strong> 123 School Street, City, Country</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Othman School</p>
+  </footer>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="java.js"></script>
+  <script src="prof.js"></script>
+    <script src="n.js"></script>
+
+</body>
+</html>

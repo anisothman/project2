@@ -1,0 +1,460 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  text-align: right;
+}
+
+header {
+  background: linear-gradient(90deg, #1e90ff, #0077b6);
+  height: 80px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+button{
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+  /* transition: color ; */
+}
+
+nav a:hover {
+  color: #ffd166;
+}
+
+main {
+  padding: 40px 30px;
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+main h2 {
+  color: #0077b6;
+  margin-top: 0;
+}
+
+main p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  padding: 15px 0;  
+  background-color: #1e90ff;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+.content{
+    display: none;
+}
+
+#connection a {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 13px;
+  font-weight: 600;
+ margin-left: 20px;
+}
+
+
+/* Style the form section */
+#form_pro {
+ background-color: #fff; 
+  padding: 20px;
+  max-width: 400px;
+  margin: 30px auto;  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Center the form title */
+#form_pro > form > div {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color:blueviolet;
+}
+
+/* Table style */
+#form_pro table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table cells padding */
+#form_pro td {
+  padding: 10px 8px;
+}
+
+/* Labels style */
+#form_pro label {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Inputs style */
+#form_pro input[type="text"],
+#form_pro input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+#form_pro input[type="text"]:focus,
+#form_pro input[type="password"]:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+/* Submit and reset buttons style */
+#form_pro input[type="submit"],
+#form_pro input[type="reset"] {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+#form_pro input[type="submit"]:hover,
+#form_pro input[type="reset"]:hover {
+  background-color: #005bb5;
+}
+
+/* Links style */
+#form_pro a {
+  display: inline-block;
+  color: #1e90ff;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+#form_pro a:hover {
+  color: #004080;
+}
+
+/* Center links inside table cells */
+#form_pro td[colspan="2"] {
+  text-align: center;
+}
+
+/* Style the form section */
+#form_etu {
+ background-color: #fff; 
+  padding: 20px;
+  max-width: 400px;
+  margin: 30px auto;  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Center the form title */
+#form_etu > form > div {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color:blueviolet;
+}
+
+/* Table style */
+#form_etu table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table cells padding */
+#form_etu td {
+  padding: 10px 8px;
+}
+
+/* Labels style */
+#form_etu label {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Inputs style */
+#form_etu input[type="text"],
+#form_etu input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+#form_etu input[type="text"]:focus,
+#form_etu input[type="password"]:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+/* Submit and reset buttons style */
+#form_etu input[type="submit"],
+#form_etu input[type="reset"] {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+#form_etu input[type="submit"]:hover,
+#form_etu input[type="reset"]:hover {
+  background-color: #005bb5;
+}
+
+/* Links style */
+#form_etu a {
+  display: inline-block;
+  color: #1e90ff;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+#form_etu a:hover {
+  color: #004080;
+}
+
+/* Center links inside table cells */
+#form_etu td[colspan="2"] {
+  text-align: center;
+}
+
+/* Style the form section */
+#form_admin {
+ background-color: #fff; 
+  padding: 20px;
+  max-width: 400px;
+  margin: 30px auto;  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Center the form title */
+#form_admin > form > div {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color:blueviolet;
+}
+
+/* Table style */
+#form_admin table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table cells padding */
+#form_admin td {
+  padding: 10px 8px;
+}
+
+/* Labels style */
+#form_admin label {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Inputs style */
+#form_admin input[type="text"],
+#form_admin input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+#form_admin input[type="text"]:focus,
+#form_admin input[type="password"]:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+/* Submit and reset buttons style */
+#form_admin input[type="submit"],
+#form_admin input[type="reset"] {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+#form_admin input[type="submit"]:hover,
+#form_admin input[type="reset"]:hover {
+  background-color: #005bb5;
+}
+
+
+#contact {
+    max-width: 400px; 
+    margin: 40px auto; 
+    padding: 20px;
+    border-radius: 8px; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    text-align: center;
+}
+#inscrirprof {
+  display: none; /* shown with showSection */
+  padding: 40px 20px;
+}
+
+#inscrirprof table {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+#inscrirprof td {
+  padding: 5px;
+  font-size: 15px;
+}
+
+#inscrirprof td:first-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+#inscrirprof input[type="text"],
+#inscrirprof input[type="email"],
+#inscrirprof input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#inscrirprof input:focus {
+  outline: none;
+  border-color: #1e90ff;
+}
+
+#inscrirprof input[type="submit"] {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#inscrirprof input[type="submit"]:hover {
+  background-color: #187bcd;
+}
+
+
+
+
+#inscrireet {
+  display: none; /* affiché avec showSection */
+  padding: 40px 20px;
+}
+
+#inscrireet table {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+#inscrireet td {
+  padding: 5px;
+  font-size: 15px;
+}
+
+#inscrireet td:first-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+#inscrireet input[type="text"],
+#inscrireet input[type="email"],
+#inscrireet input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#inscrireet input:focus {
+  outline: none;
+  border-color: #1e90ff;
+}
+
+#inscrireet input[type="submit"] {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#inscrireet input[type="submit"]:hover {
+  background-color: #187bcd;
+}
