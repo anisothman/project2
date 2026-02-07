@@ -1,14 +1,315 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+<meta charset="UTF-8">
+<title>Espace Administrateur</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f1f5f9;
+}
+
+/* HEADER */
+header{
+  background:#1d3557;
+  color:white;
+  padding:15px;
+  text-align:center;
+}
+
+/* LAYOUT */
+.container{
+  display:flex;
+  height:90vh;
+}
+
+/* SIDEBAR */
+aside{
+  width:250px;
+  background:#457b9d;
+  color:white;
+  padding:20px;
+}
+
+aside button{
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#a8dadc;
+}
+
+aside button:hover{
+  background:#f1faee;
+}
+
+/* CONTENT */
+main{
+  flex:1;
+  padding:20px;
+  background:#fff;
+  overflow:auto;
+}
+
+.section{
+  display:none;
+}
+
+.section h2{
+  color:#1d3557;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+th,td{
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:center;
+}
+
+th{
+  background:#1d3557;
+  color:white;
+}
+
+tr:hover{
+  background:#f1f5f9;
+  cursor:pointer;
+}
+
+/* NEWS */
+textarea{
+  width:100%;
+  height:100px;
+  padding:10px;
+}
+
+.news-box{
+  background:#e9ecef;
+  padding:10px;
+  margin-top:10px;
+  border-left:5px solid #1d3557;
+}
+</style>
 </head>
+
 <body>
+
+<header>
+  <h1>Espace Administrateur</h1>
+</header>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+<aside>
+  <button onclick="return affichereleve()">👨‍🎓 Étudiants</button>
+  <button onclick="showSection('profs')">👨‍🏫 Professeurs</button>
+  <button onclick="showSection('news')">📰 News</button>
+</aside>
+
+<!-- CONTENT -->
+<main>
+
+<!-- ETUDIANTS -->
+<div id="etudiants" class="section">
+
+  <table id="etudiant">
     
+    <tbody>
+    
+    </tbody>
+  </table>
+
+  <div >
+    <table id="note">
+    
+    <tbody>
+    
+    </tbody>
+  </table>
+
+  </div>
+</div>
+
+<!-- PROFS -->
+<div id="profs" class="section">
+  <h2>Liste des professeurs</h2>
+
+  <table>
+    <tr>
+      <th>Nom</th>
+      <th>Matière</th>
+    </tr>
+    <tr>
+      <td>Mr Ahmed</td>
+      <td>Math</td>
+    </tr>
+    <tr>
+      <td>Mme Sara</td>
+      <td>Informatique</td>
+    </tr>
+  </table>
+</div>
+
+<!-- NEWS -->
+<div id="news" class="section">
+  <h2>Ajouter une news</h2>
+
+  <textarea id="newsText" placeholder="Écrire une news..."></textarea><br><br>
+  <button onclick="addNews()">Publier</button>
+
+  <h3>News publiées</h3>
+  <div id="newsList"></div>
+</div>
+
+</main>
+</div>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="admin.js"></script>
+<script>
+function showSection(id){
+  document.querySelectorAll('.section')
+    .forEach(s => s.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+
+
+/* NEWS */
+
+function addNews(){
+  const text = document.getElementById('newsText').value;
+  if(!text) return alert("Écrire une news");
+
+  const div = document.createElement('div');
+  div.className = "news-box";
+  div.textContent = text;
+
+  document.getElementById('newsList').prepend(div);
+  document.getElementById('newsText').value="";
+}
+
+/* DEFAULT */
+showSection('etudiants');
+
+async function moyemme(nomp){
+const supabase=window.supabaseClient;
+const{data:d,error}=await supabase 
+.from('note')
+.select('matiere,note')
+.eq('nom',nomp);
+if(!d||d.length==0){
+const tbody = document.querySelector('#note tbody');
+    tbody.innerHTML = ''; // تنظيف الجدول قبل الإضافة
+
+    const tr = document.createElement('tr');
+      const td = document.createElement('td');
+    td.colSpan = 2;
+      td.textContent = 'Aucune note.';
+      td.style.textAlign = 'center';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      return;
+}
+
+const tbody=document.querySelector("#note tbody");
+tbody.innerHTML='';
+ const tr = document.createElement('tr');
+
+      const tdnom = document.createElement('td');
+      tdnom.textContent = "nom";
+
+      const tdemail = document.createElement('td');
+tdemail.textContent="email";
+      tr.appendChild(tdnom);
+      tr.appendChild(tdemail);
+
+      tbody.appendChild(tr);
+d.forEach(d=>{
+const tr=document.createElement('tr');
+const tdn=document.createElement('td');
+const tdm=document.createElement('td');
+tdn.textContent=d.note;
+tdm.textContent=d.matiere;
+tr.appendChild(tdm);
+tr.appendChild(tdn);
+tbody.appendChild(tr);
+});
+
+
+
+}
+  async function affichereleve() {
+    const supabase = window.supabaseClient; 
+    const { data: noms, error } = await supabase
+      .from('etudiant')
+      .select('nom, email')
+
+      if (error) {
+      alert('Erreure ' + error.message);
+      return;
+    }
+    const tbody = document.querySelector('#etudiant tbody');
+    tbody.innerHTML = ''; // تنظيف الجدول قبل الإضافة
+
+    if (!noms || noms.length === 0) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 2;
+      td.textContent = 'Aucune etudiants.';
+      td.style.textAlign = 'center';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      return;
+    }
+    
+      const tr = document.createElement('tr');
+
+      const tdnom = document.createElement('td');
+      tdnom.textContent = "nom";
+
+      const tdemail = document.createElement('td');
+tdemail.textContent="email";
+      tr.appendChild(tdnom);
+      tr.appendChild(tdemail);
+
+      tbody.appendChild(tr);
+
+    // إضافة الصفوف لكل ملاحظة
+    noms.forEach(noms => {
+      const tr = document.createElement('tr');
+
+      const tdnom = document.createElement('td');
+      tdnom.textContent = noms.nom;
+
+      const tdemail = document.createElement('td');
+      tdemail.textContent = noms.email;
+       
+      tr.appendChild(tdnom);
+
+      tr.appendChild(tdemail);
+    tdnom.addEventListener('click', () => {
+      moyemme(noms.nom);
+        });
+        tdemail.addEventListener('click', () => {
+      moyemme(noms.nom);
+        });
+      tbody.appendChild(tr);
+    });
+}
+</script>
+
 </body>
 </html>
