@@ -215,6 +215,7 @@ function exit(){
     window.location.href="index.html";
 }
 
+ 
   async function afficherNotes() {
     const supabase = window.supabaseClient;
 const currentStudentName = localStorage.getItem('currentStudentName');
@@ -247,11 +248,13 @@ const currentStudentName = localStorage.getItem('currentStudentName');
       tbody.appendChild(tr);
       return;
     }
-
+let s=0;
+let n=0;
     // إضافة الصفوف لكل ملاحظة
     notes.forEach(note => {
       const tr = document.createElement('tr');
-
+n=n+1;
+s=s+note.note;
       const tdMatiere = document.createElement('td');
       tdMatiere.textContent = note.matiere;
 
@@ -263,6 +266,20 @@ const currentStudentName = localStorage.getItem('currentStudentName');
 
       tbody.appendChild(tr);
     });
+    if (n > 0) {
+  const trMoy = document.createElement('tr');
+
+  const tdMatiere = document.createElement('td');
+  tdMatiere.textContent = "Moyenne générale";
+
+  const tdNote = document.createElement('td');
+  tdNote.textContent = (s / n).toFixed(2); // رقمين بعد الفاصلة
+
+  trMoy.appendChild(tdMatiere);
+  trMoy.appendChild(tdNote);
+
+  tbody.appendChild(trMoy);}
+
   }
 window.addEventListener('load', async () => {
   const supabase = window.supabaseClient;
@@ -302,3 +319,4 @@ window.addEventListener('load', async () => {
   window.addEventListener('load', afficherNotes);
 </script>
 </html>
+
