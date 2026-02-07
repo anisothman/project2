@@ -65,9 +65,11 @@ const{data,error}=await supabase
 if (error)return alert('erreru lors de recherer' + error.message);
 if (data.length==0)return alert("adresse no trouver");
 if (data[0].password!=pass ) return alert("password incorrect");
+localStorage.setItem('currentStudentName', data[0].nom);
 
 const currentStudentName = localStorage.getItem('currentStudentName');
 
  window.location.href = "etu.html";
 
 }
+
